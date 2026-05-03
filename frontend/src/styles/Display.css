@@ -1,0 +1,73 @@
+
+/* =========================================================
+   Display Component
+   ========================================================= */
+ 
+.calc-display {
+  background: var(--bg-display);
+  border-radius: var(--radius-md);
+  padding: 20px 20px 16px;
+  margin: 16px 0 14px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  border: 1px solid var(--border-btn);
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition-med);
+}
+ 
+.calc-display::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(91,77,232,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+ 
+.calc-display--error {
+  border-color: rgba(255, 107, 138, 0.3);
+}
+ 
+/* Expression line */
+.calc-display__expression {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--text-expr);
+  margin-bottom: 6px;
+  min-height: 1.2em;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  letter-spacing: 0.02em;
+  transition: color var(--transition-med);
+}
+ 
+/* Main value */
+.calc-display__value {
+  font-family: var(--font-display);
+  color: var(--text-display);
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.1;
+  transition: font-size var(--transition-fast), color var(--transition-med);
+  letter-spacing: -0.02em;
+}
+ 
+.calc-display__value--loading {
+  opacity: 0.5;
+  animation: pulse 0.8s ease infinite alternate;
+}
+ 
+@keyframes pulse {
+  from { opacity: 0.3; }
+  to   { opacity: 0.7; }
+}

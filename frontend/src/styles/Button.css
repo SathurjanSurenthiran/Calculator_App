@@ -1,0 +1,124 @@
+.calc-btn {
+  position: relative;
+  border: 1px solid var(--border-btn);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 500;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background var(--transition-fast),
+    transform  var(--transition-fast),
+    box-shadow var(--transition-fast),
+    color      var(--transition-fast);
+  box-shadow: var(--shadow-btn);
+  outline: none;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+ 
+/* Ripple overlay */
+.calc-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  border-radius: inherit;
+  transition: background var(--transition-fast);
+}
+ 
+.calc-btn:active::after {
+  background: rgba(255,255,255,0.07);
+}
+ 
+.calc-btn:active {
+  transform: scale(0.94);
+}
+ 
+.calc-btn__inner {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+ 
+/* ── Variants ─────────────────────────────────────────── */
+ 
+/* Number buttons */
+.calc-btn--number {
+  background: var(--bg-btn-num);
+  color: var(--text-primary);
+}
+.calc-btn--number:hover {
+  background: var(--bg-btn-hover-num);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+ 
+/* Action buttons (C, +/-, ⌫) */
+.calc-btn--action {
+  background: var(--bg-btn-action);
+  color: var(--text-action);
+  font-size: 1.05rem;
+}
+.calc-btn--action:hover {
+  background: var(--bg-btn-hover-action);
+}
+ 
+/* Operator buttons */
+.calc-btn--operator {
+  background: var(--bg-btn-op);
+  color: var(--text-op);
+  font-size: 1.25rem;
+}
+.calc-btn--operator:hover {
+  background: var(--bg-btn-hover-op);
+  box-shadow: 0 4px 20px var(--glow-op);
+}
+.calc-btn--operator.calc-btn--active {
+  background: var(--bg-btn-active);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(91,77,232,0.4);
+}
+ 
+/* Equals button */
+.calc-btn--equals {
+  background: var(--bg-btn-eq);
+  color: var(--text-eq);
+  font-size: 1.35rem;
+  box-shadow: var(--shadow-eq);
+  border-color: transparent;
+}
+.calc-btn--equals:hover:not(:disabled) {
+  background: var(--bg-btn-hover-eq);
+  box-shadow: var(--shadow-eq-hover);
+  transform: translateY(-1px);
+}
+.calc-btn--equals:active:not(:disabled) {
+  transform: scale(0.94) translateY(0);
+}
+ 
+/* Disabled state */
+.calc-btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+ 
+/* Keyboard focus ring */
+.calc-btn:focus-visible {
+  outline: 2px solid var(--text-op);
+  outline-offset: 2px;
+}
+ 
+/* ── Size tweaks for small screens ─────────────────────── */
+@media (max-width: 380px) {
+  .calc-btn {
+    height: 58px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+}

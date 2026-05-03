@@ -1,0 +1,137 @@
+/* =========================================================
+   Calculator Layout
+   ========================================================= */
+ 
+.calc-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 440px;
+  overflow: hidden;
+  animation: slideUp 0.5s cubic-bezier(.16,1,.3,1) both;
+}
+ 
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+ 
+/* ── Header ────────────────────────────────────────────── */
+.calc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border-card);
+}
+ 
+.calc-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
+ 
+.calc-header__actions {
+  display: flex;
+  gap: 6px;
+}
+ 
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+ 
+.icon-btn:hover {
+  background: var(--bg-btn-action);
+  color: var(--text-primary);
+}
+ 
+.icon-btn--active {
+  background: var(--bg-btn-op);
+  color: var(--text-op);
+}
+ 
+/* ── Body ──────────────────────────────────────────────── */
+.calc-body {
+  display: flex;
+  gap: 0;
+}
+ 
+/* ── Main calculator panel ─────────────────────────────── */
+.calc-main {
+  flex: 1;
+  padding: 0 20px 20px;
+  min-width: 0;
+}
+ 
+/* ── Error banner ──────────────────────────────────────── */
+.calc-error-banner {
+  margin: 6px 0;
+  padding: 8px 12px;
+  background: rgba(255, 107, 138, 0.12);
+  border: 1px solid rgba(255, 107, 138, 0.25);
+  border-radius: var(--radius-sm);
+  color: var(--text-error);
+  font-size: 0.78rem;
+  text-align: center;
+  animation: shake 0.35s ease;
+}
+ 
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+ 
+/* ── Button Grid ───────────────────────────────────────── */
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+ 
+/* ── Hint ──────────────────────────────────────────────── */
+.calc-hint {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-expr);
+  margin-top: 14px;
+  opacity: 0.7;
+}
+ 
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .calc-wrapper {
+    border-radius: var(--radius-lg);
+    max-width: 100%;
+  }
+ 
+  .calc-body {
+    flex-direction: column;
+  }
+}
+ 
+@media (max-width: 360px) {
+  .calc-grid {
+    gap: 7px;
+  }
+}
